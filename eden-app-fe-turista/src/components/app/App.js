@@ -1,14 +1,14 @@
 //Dependencies
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu} from 'antd';
 
 //Resources
 import './App.css';
 import "antd/dist/antd.css";
 
 //Internal Components
-import Home from "../home/Home";
+import Home from "../home/home";
 
 const { Header, Content, Footer } = Layout;
 
@@ -27,13 +27,8 @@ function App() {
               <Menu.Item key="3">pag 3</Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '0 50px' }}>
 
-            {/* Breadcrumb (if needed) part  */}
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-            </Breadcrumb>
-
+          <Content style={{ padding: '0 50px', backgroundColor: 'white' }}>
             {/* Content part  */}
             <div className="site-layout-content">
               <Switch>
@@ -41,12 +36,11 @@ function App() {
                 <Route path="*" component={Error} />
               </Switch>
             </div>
-
           </Content>
 
           {/* Footer part  */}
           <Footer style={{ textAlign: 'center' }}>
-            Footer para condonación...
+            Footer ...
           </Footer>
         </Layout>
       </Router>
