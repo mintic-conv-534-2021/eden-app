@@ -1,0 +1,32 @@
+.product-item .card{
+    width: 300px;
+    height: 280px;
+    background-color: #C4C4C4;
+    border-radius: 12px;
+}
+
+.item-overview{
+    padding: 10px 0 10px 0;
+}
+
+.item-button{
+    height: 55px;
+    width: 140px;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.item-description{
+    font-family: Roboto;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+}
