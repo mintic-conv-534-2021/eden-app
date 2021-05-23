@@ -1,0 +1,15 @@
+.organization .banner{
+    padding-top: 10px;
+}
+
+.organization .banner .card-item{  
+    height: 200px;
+    width: auto;
+    background: #39B0F3;
+    border-radius: 12px;
+    position: relative;
+}
+
+.organization .description{  
+    padding-top: 10px;
+}

@@ -45,6 +45,9 @@ const OrganizationModule = () => (
         <Slider {...settings}>
             <OrganizationItem />
             <OrganizationItem />
+            <OrganizationItem />
+            <OrganizationItem />
+            <OrganizationItem />
         </Slider>
     </div>
 )

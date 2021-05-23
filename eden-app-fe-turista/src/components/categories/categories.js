@@ -7,31 +7,37 @@ const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     responsive: [
         {
-            breakpoint: 1200,
+            breakpoint: 1300,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4
+            }
+        },
+        {
+            breakpoint: 1075,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+            }
+        },
+        {
+            breakpoint: 835,
             settings: {
                 slidesToShow: 2,
-                slidesToScroll: 1
+                slidesToScroll: 2
             }
         },
         {
-            breakpoint: 1008,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        },
-        {
-            breakpoint: 800,
+            breakpoint: 585,
             settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1
             }
         }
-
     ]
 };
 

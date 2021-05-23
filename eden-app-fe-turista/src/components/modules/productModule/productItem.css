@@ -1,5 +1,5 @@
 .product-item .card{
-    width: 300px;
+    width: 315px;
     height: 280px;
     background-color: #C4C4C4;
     border-radius: 12px;
@@ -9,7 +9,7 @@
     padding: 10px 0 10px 0;
 }
 
-.item-button{
+.ant-btn.item-button{
     height: 55px;
     width: 140px;
     font-family: Roboto;
@@ -19,6 +19,7 @@
     line-height: 26px;
     letter-spacing: 0em;
     text-align: center;
+    background-color: #C4C4C4;
 }
 
 .item-description{
@@ -30,3 +31,56 @@
     letter-spacing: 0em;
     text-align: left;
 }
+
+.description-container{
+    padding-left: 25px;
+    padding-right: 25px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+}
+
+.description-container .price{
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: right;
+    padding-right: 25px;
+}
+
+.description-container .general{
+    padding-right: 25px;
+}
+
+/* Modal properties (take this to another place, plz) */
+.ant-modal.custom-modal{
+    width: 70%;
+}
+
+.ant-modal-content{
+    border-radius: 12px;
+}
+
+.ant-modal-header{
+    height: 280px;
+    border-radius: 12px;
+    background-color: #C4C4C4;
+    display: flex;
+    flex-wrap: wrap;
+}
+.ant-modal-title{
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+    align-self: flex-end;
+    padding-left: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  }
