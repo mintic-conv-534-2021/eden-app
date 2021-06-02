@@ -10,8 +10,9 @@ import "antd/dist/antd.css";
 
 //Internal Components
 import Home from "../home/home";
-import Organization from "../organization/organization";
+import Organization from "../organization/organizations";
 import FooterContent from "../footer/footer"
+import OrganizationItemDetail from "../organization/organizationItemDetail";
 
 const { Header, Content, Footer } = Layout;
 
@@ -29,7 +30,7 @@ function App() {
                 <Link to="/">Home</Link>
               </Menu.Item>
               <Menu.Item key="2">
-                <Link to="/organizacion">Organización</Link>
+                <Link to="/organizations">Organización</Link>
               </Menu.Item>
               <Menu.Item key="3">Acerca de</Menu.Item>
             </Menu>
@@ -40,7 +41,8 @@ function App() {
             <div className="site-layout-content">
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/organizacion" component={Organization} />
+                <Route exact path="/organizations" component={Organization} />
+                <Route exact path="/organizations/detail" render={(props) => <OrganizationItemDetail {...props}/>} />
                 <Route path="*" component={Error} />
               </Switch>
             </div>

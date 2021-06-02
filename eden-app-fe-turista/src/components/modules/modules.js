@@ -6,6 +6,7 @@ const Modules = () => (
     <div className="module-manager">
         <ProductModule />
         <OrganizationModule />
+        <ProductModule />
     </div>
 )
 

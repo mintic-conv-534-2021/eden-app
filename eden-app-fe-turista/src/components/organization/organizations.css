@@ -1,0 +1,13 @@
+
+.organizations .organization-items{
+
+    padding-top: 70px;
+}
+
+.organizations .title{
+    padding-right: 20px;
+}
+
+.organizations .title-hide{
+    display: none;
+}

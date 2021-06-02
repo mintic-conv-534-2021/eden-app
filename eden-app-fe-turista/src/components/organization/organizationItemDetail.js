@@ -1,12 +1,12 @@
 import React from "react";
 import { Typography } from 'antd';
 import Modules from "../modules/modules";
-import './organization.css';
+import './organizationItemDetail.css';
 
 const { Title } = Typography;
 
-const Organization = () => (
-    <div className="organization">
+const OrganizationItemDetail = () => (
+    <div className="organization-item-detail">
         <Title>Paseo el Edén - Organización</Title>
         <div className="breadcrumb">Home / Modulo / Organización</div>
         <div className="banner">
@@ -29,4 +29,4 @@ const Organization = () => (
     </div>
 )
 
-export default Organization;
+export default OrganizationItemDetail;

@@ -7,9 +7,20 @@
     width: 650px;
 }
 
-.organization-item .card{
+.organization-module-item .card{
     width: 645px;
     height: 280px;
     background-color: #C4C4C4;
     border-radius: 12px;
+}
+
+.organization-module-item .card .organization-photo{
+    width: 645px;
+    height: 280px;
+    background-color: #C4C4C4;
+    border-radius: 12px;
+}
+
+.organization-module-item .title-container{
+    width: 100%;
 }

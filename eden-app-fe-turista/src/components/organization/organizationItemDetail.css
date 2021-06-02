@@ -1,8 +1,8 @@
-.organization .banner{
+.organization-item-detail .banner{
     padding-top: 10px;
 }
 
-.organization .banner .card-item{  
+.organization-item-detail .banner .card-item{  
     height: 200px;
     width: auto;
     background: #39B0F3;
@@ -10,6 +10,6 @@
     position: relative;
 }
 
-.organization .description{  
+.organization-item-detail .description{  
     padding-top: 10px;
 }

@@ -7,9 +7,10 @@
   padding: 24px;
   background: white;
   text-align: left;
-  /* font-family: Roboto; */
   font-style: normal;
+  padding-left: 50px;
 }
+
 #components-layout-demo-top .logo {
   float: left;
   width: 120px;
