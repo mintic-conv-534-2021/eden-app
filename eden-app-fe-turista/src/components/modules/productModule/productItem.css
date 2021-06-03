@@ -1,7 +1,17 @@
+.product-item{
+    padding-bottom: 30px;
+}
+
 .product-item .card{
-    width: 300px;
+    width: 315px;
     height: 280px;
     background-color: #C4C4C4;
+    border-radius: 12px;
+}
+
+.product-item .card .product-image{
+    width: 315px;
+    height: 280px;
     border-radius: 12px;
 }
 
@@ -9,7 +19,7 @@
     padding: 10px 0 10px 0;
 }
 
-.item-button{
+.ant-btn.item-button{
     height: 55px;
     width: 140px;
     font-family: Roboto;
@@ -19,14 +29,86 @@
     line-height: 26px;
     letter-spacing: 0em;
     text-align: center;
+    background-color: #C4C4C4;
+    border-radius: 12px;
 }
 
 .item-description{
-    font-family: Roboto;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: 12px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: justify;
+    padding-right: 10px;
 }
+
+.description-container{
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+}
+
+.description-container .product-title{
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: absolute;
+    top: 45%;
+    left: 5%;
+}
+
+.description-container .price{
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: right;
+    padding-right: 5%;
+}
+
+.description-container .general{
+    padding-right: 50px;
+    padding-left: 25px;
+}
+
+
+/* Modal properties (take this to another place, plz) */
+.ant-modal.custom-modal{
+    width: 70%;
+}
+
+.ant-modal-content{
+    border-radius: 12px;
+}
+
+.custom-modal .background{
+    height: 280px;
+    border-radius: 12px;
+    background-color: #C4C4C4;
+}
+
+.ant-modal-body{
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ant-modal-title{
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+    align-self: flex-end;
+    padding-left: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  }
