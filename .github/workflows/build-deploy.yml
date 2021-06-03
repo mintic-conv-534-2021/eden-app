@@ -1,0 +1,43 @@
+# Este flujo de trabajo crea la versión de distribución del front, 
+# Para usar este flujo es necesario tener en cuenta:
+#
+# 1. Debe disponer de un Bucket S3 previamente creado.
+# 2. Debe estar configurado como sitio web estatico con cloudfront.
+# 3. Store an IAM user access key in GitHub Actions secrets named `AWS_ACCESS_KEY_ID`
+#    and `AWS_SECRET_ACCESS_KEY`.
+
+on:
+  push:
+    branches:
+      - feature/devops
+
+name: Despliegue en bucket s3
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: Install dependencies
+          run: |
+            cd eden-app-fe-turista
+            npm run install
+
+        - name: Build
+          run: npm run build
+
+        - name: Deploy
+          uses: reggionick/s3-deploy@v3
+          with:
+            folder: build
+            bucket: ${{ secrets.S3_BUCKET }}
+            bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+            invalidation: /
+            delete-removed: true
+            no-cache: true
+            private: true
