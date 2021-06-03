@@ -34,13 +34,22 @@ jobs:
             npm run build
 
         - name: Deploy
-          uses: Reggionick/s3-deploy@v3.1.1
+        - uses: jakejarvis/s3-sync-action@master
           with:
-            folder: $PROY_DIR/build
-            bucket: ${{ secrets.S3_BUCKET }}
-            bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-            invalidation: /
-            delete-removed: true
-            no-cache: true
-            private: true
+            args: --acl public-read --follow-symlinks --delete
+          env:
+            AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_REGION: ${{ secrets.S3_BUCKET_REGION }}
+            SOURCE_DIR: '$PROY_DIR/build'
+          
+        # Invalidate Cloudfront (this action)
+        - name: invalidate
+          uses: chetan/invalidate-cloudfront-action@master
+          env:
+            DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+            PATHS: '/*'
+            AWS_REGION: ${{ secrets.S3_BUCKET_REGION }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
