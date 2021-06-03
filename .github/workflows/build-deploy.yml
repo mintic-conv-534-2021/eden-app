@@ -19,21 +19,24 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      PROY_DIR: eden-app-fe-turista
     steps:
         - uses: actions/checkout@v2
 
         - name: Install dependencies
           run: |
-            cd eden-app-fe-turista
+            cd $PROY_DIR
             npm install
 
         - name: Build
-          run: npm run build
+          run: |
+            cd $PROY_DIR
+            npm run build
 
         - name: Deploy
           uses: reggionick/s3-deploy@v3
           with:
-            folder: build
+            folder: $PROY_DIR/build
             bucket: ${{ secrets.S3_BUCKET }}
             bucket-region: ${{ secrets.S3_BUCKET_REGION }}
             dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
