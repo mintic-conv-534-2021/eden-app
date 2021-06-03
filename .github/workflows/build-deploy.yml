@@ -25,7 +25,7 @@ jobs:
         - name: Install dependencies
           run: |
             cd eden-app-fe-turista
-            npm run install
+            npm install
 
         - name: Build
           run: npm run build
