@@ -9,8 +9,7 @@ const item = props.category;
 
 const handleClick = (e) => {
     e.item = item;
-    console.log(e.item);
-  };
+};
 
 return(
     <div className="category-item">

@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Slider from "react-slick";
 import CategoryItem from "./categoryItem";
-import axios from "axios";
 
 import "./categories.css";
-import { API_ADMIN } from "../../context/constants";
-
-const urlGET = API_ADMIN + "catalogo-organizacion";
 
 const settings = {
   dots: false,
@@ -46,26 +42,26 @@ const settings = {
   ],
 };
 
-const Categories = () => {
+const Categories = (props) => {
   const [categories, setCategories] = useState({});
-  //Update only at first load
+
   useEffect(() => {
-    axios
-      .get(urlGET)
-      .then((res) => setCategories(res.data.catalogoOrganizacionDTOList));
-  }, []);
+    setCategories(props);
+  }, [props]);
 
   return (
     <div className="categories">
-      <Slider {...settings}>
-        {categories.length != null &&
-              categories.map((item) => (
-                <CategoryItem
-                  key={item.catalogoOrganizacionId}
-                  category={item}
-                />
-              ))}
-      </Slider>
+      {typeof categories.items !== "undefined" &&
+        <Slider {...settings}>
+          {categories.items.length != null &&
+                categories.items.map((item) => (
+                  <CategoryItem
+                    key={item.catalogoOrganizacionId}
+                    category={item}
+                  />
+                ))}
+        </Slider>
+      }
     </div>
   );
 };
