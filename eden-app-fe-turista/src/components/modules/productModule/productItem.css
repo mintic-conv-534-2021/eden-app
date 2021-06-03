@@ -1,3 +1,7 @@
+.product-item{
+    padding-bottom: 30px;
+}
+
 .product-item .card{
     width: 315px;
     height: 280px;
