@@ -1,0 +1,26 @@
+.organization-description{
+    font-family: Roboto;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: left;
+    width: 650px;
+}
+
+.organization-module-item .card{
+    width: 645px;
+    height: 280px;
+    background-color: #C4C4C4;
+    border-radius: 12px;
+}
+
+.organization-module-item .card .organization-photo{
+    width: 645px;
+    height: 280px;
+    background-color: #C4C4C4;
+    border-radius: 12px;
+}
+
+.organization-module-item .title-container{
+    width: 100%;
+}

@@ -6,7 +6,11 @@
   min-height: 280px;
   padding: 24px;
   background: white;
+  text-align: left;
+  font-style: normal;
+  padding-left: 50px;
 }
+
 #components-layout-demo-top .logo {
   float: left;
   width: 120px;
@@ -17,4 +21,9 @@
 .ant-row-rtl #components-layout-demo-top .logo {
   float: right;
   margin: 16px 0 16px 24px;
+}
+
+.main-layout{
+  padding: 0 1% 0 1%;
+  background-color: white;
 }
