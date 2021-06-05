@@ -20,7 +20,7 @@ return(
             onClick={(i) => handleClick(i)}
         >
         </Card>
-        <Title level={5}>{item.nombre}</Title>
+        <Title className="title" level={5}>{item.catalogoOrganizacionNombre}</Title>
         <div className="card-description">{item.descripcion}</div>
     </div>
 )};

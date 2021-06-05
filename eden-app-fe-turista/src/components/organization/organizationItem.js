@@ -6,7 +6,7 @@ import "./organizationItem.css";
 const { Title } = Typography;
 
 const OrganizationItem = (props) => {
-  const item = props.organization;
+  const item = props.organization.organization;
 
   return (
     <div className="organization-item">
@@ -20,7 +20,7 @@ const OrganizationItem = (props) => {
           hoverable
           className="card"
           cover={<img className="card-image" alt="" src={item.urlBanner} />}
-        ></Card>
+        />
       </Link>
       <Title className="card-title" level={5}>
         {item.nombre}

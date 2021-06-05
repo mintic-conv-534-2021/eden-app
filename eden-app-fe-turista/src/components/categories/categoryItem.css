@@ -5,6 +5,10 @@
     border-radius: 12px;
 }
 
+.category-item .title{
+    margin-bottom: 2px
+}
+
 .category-item .card .photo{
     width: 315px;
     height: 170px;

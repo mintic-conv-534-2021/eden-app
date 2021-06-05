@@ -41,6 +41,18 @@
     letter-spacing: 0em;
     text-align: justify;
     padding-right: 10px;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.item-title{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .description-container{
@@ -61,10 +73,13 @@
     position: absolute;
     top: 45%;
     left: 5%;
+
+    color: white;
+    text-shadow: 0 0 12px black;
 }
 
 .description-container .price{
-    font-size: 26px;
+    font-size: 36px;
     font-style: normal;
     font-weight: 500;
     line-height: 42px;
@@ -91,6 +106,7 @@
     height: 280px;
     border-radius: 12px;
     background-color: #C4C4C4;
+    opacity: 0.9s;
 }
 
 .ant-modal-body{
@@ -107,6 +123,10 @@
     letter-spacing: 0em;
     align-self: flex-end;
     padding-left: 15px;
+}
+
+.ant-modal-close-x{
+    color: white;
 }
 
 @media only screen and (max-width: 600px) {

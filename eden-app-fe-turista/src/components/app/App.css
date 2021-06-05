@@ -27,3 +27,8 @@
   padding: 0 1% 0 1%;
   background-color: white;
 }
+
+.ant-layout.layout .ant-layout-header{
+  background-color: white;
+  height: 20px;
+}

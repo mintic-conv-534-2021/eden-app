@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Row, Col } from "antd";
+import { Typography, Row, Col, Tooltip } from "antd";
 import axios from "axios";
 
 import Slider from "react-slick";
 import "./organizationItemDetail.css";
 import { API_ADMIN } from "../../context/constants";
 import ProductItem from "../modules/productModule/productItem";
+
+import { YoutubeOutlined, WhatsAppOutlined, InfoCircleOutlined,
+  InstagramOutlined, FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 const urlGET = API_ADMIN + "organizacion/";
@@ -14,8 +17,8 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 5,
-  slidesToScroll: 5,
+  slidesToShow: 4,
+  slidesToScroll: 4,
   responsive: [
     {
       breakpoint: 1300,
@@ -50,14 +53,18 @@ const settings = {
 
 const OrganizationItemDetail = (props) => {
   const [organization, setOrganization] = useState("");
+  const [catalogOrganization, setCatalogOrganization] = useState("");
   const [catalogs, setCatalogs] = useState([]);
 
   useEffect(() => {
     let item = props.location.state;
 
     if (typeof item !== "undefined") {
+      const org = item.props.organization;
+      setCatalogOrganization(org.category);
+
       axios
-        .get(urlGET + item.props.organization.organizacionId)
+        .get(urlGET + org.organization.organizacionId)
         .then((res) => {
           setOrganization(res.data.organizacionDTO);
           setCatalogs(
@@ -95,13 +102,25 @@ const OrganizationItemDetail = (props) => {
     };
   }, [props]);
 
+  const GenerateExternalLink = (e) => {
+    var linki = e;
+    if (linki.toLowerCase().indexOf("https://") === -1){
+      linki = "https://" + linki;
+    }
+    return linki;
+  }
+
+  const GenerateWhatsapp = (e) => {
+    return "https://wa.me/" + e.replace(/\s/g, '');;
+  }
+
   return (
     <div className="organization-item-detail">
       {organization !== "" && (
         <div>
           <div>
             <Title>Paseo el Edén - {organization.nombre}</Title>
-            <div className="breadcrumb">Home / Restaurantes </div>
+            <div className="breadcrumb">Home / {catalogOrganization} </div>
             <div className="banner">
               <div className="card-item">
                 <img
@@ -114,8 +133,53 @@ const OrganizationItemDetail = (props) => {
             <div className="description">
               <h2>{organization.nombre}</h2>
               <p>{organization.descripcion}</p>
-              <p className="address">{organization.direccion}</p>
-              <p className="email-address">{organization.email}</p>
+              <span className="address">{organization.direccion}</span>
+              {Object.keys(organization.redSocial).length > 0 &&
+                <div className="social-section">
+                  {organization.redSocial.whatsapp !== "" &&
+                    <a href={GenerateWhatsapp(organization.redSocial.whatsapp)} target="_blank" rel="noreferrer">
+                      <Tooltip placement="top" title={organization.redSocial.whatsapp}>
+                        <WhatsAppOutlined className="social-icon" />
+                      </Tooltip>
+                    </a>
+                  }
+                  {organization.redSocial.urlInstagram !== "" &&
+                    <a href={GenerateExternalLink(organization.redSocial.urlInstagram)} target="_blank" rel="noreferrer">
+                      <Tooltip placement="top" title={organization.redSocial.urlInstagram}>
+                        <InstagramOutlined className="social-icon" />
+                      </Tooltip>
+                    </a>
+                  }
+                  {organization.redSocial.urlFacebook !== "" &&
+                    <a href={GenerateExternalLink(organization.redSocial.urlFacebook)} target="_blank" rel="noreferrer">
+                      <Tooltip placement="top" title={organization.redSocial.urlFacebook}>
+                        <FacebookOutlined className="social-icon" />
+                      </Tooltip>
+                    </a>
+                  }
+                  {organization.redSocial.urlTwitter !== "" &&
+                    <a href={GenerateExternalLink(organization.redSocial.urlTwitter)} target="_blank" rel="noreferrer">
+                      <Tooltip placement="top" title={organization.redSocial.urlTwitter}>
+                        <TwitterOutlined className="social-icon" />
+                      </Tooltip>
+                    </a>
+                  }
+                  {organization.redSocial.urlTiktok !== "" &&
+                    <a href={GenerateExternalLink(organization.redSocial.urlTiktok)} target="_blank" rel="noreferrer">
+                      <Tooltip placement="top" title={organization.redSocial.urlTiktok}>
+                        <YoutubeOutlined className="social-icon" />
+                      </Tooltip>
+                    </a>
+                  }
+                  {organization.redSocial.webPage !== "" &&
+                    <a href={GenerateExternalLink(organization.redSocial.webPage)} target="_blank" rel="noreferrer">
+                      <Tooltip placement="top" title={organization.redSocial.webPage}>
+                        <InfoCircleOutlined className="social-icon" />
+                      </Tooltip>
+                    </a>
+                  }
+                </div>
+              }
             </div>
           </div>
           <div>

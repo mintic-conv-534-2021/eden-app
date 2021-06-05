@@ -1,33 +1,159 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../banner/banner";
-import Modules from "../modules/modules";
-import { Typography } from "antd";
+import { Typography, Row, Col } from "antd";
 import Categories from "../categories/categories";
 import axios from "axios";
+import Slider from "react-slick";
+import OrganizationItem from "../organization/organizationItem"
 
+import "./home.css";
 import { API_ADMIN } from "../../context/constants";
 const { Title } = Typography;
 
-const urlGET = API_ADMIN + "catalogo-organizacion";
+
+const urlCategories = API_ADMIN + "catalogo-organizacion";
+const urlOrganizations = API_ADMIN + "organizacion/catalogo-organizacion/";
 
 const Home = () => {
   const [categories, setCategories] = useState({});
   const [selectedCategory, setSelectedCategory] = useState({});
+  const [organizations, setOrganizations] = useState({});
+  const [viewTitle, setViewTitle] = useState(false);
+  const [slidesPerRow, setSlidesPerRow] = useState(1);
+
+  const settingsOrg = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesPerRow: slidesPerRow,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesPerRow: 2,
+        },
+      },
+      {
+        breakpoint: 1075,
+        settings: {
+          slidesToShow: 3,
+          slidesPerRow: 2,
+        },
+      },
+      {
+        breakpoint: 835,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 585,
+        settings: {
+          slidesToShow: 3,
+          slidesPerRow: 2,
+        },
+      },
+    ],
+  };
 
   //Update only at first load
   useEffect(() => {
-    axios.get(urlGET).then((res) => {
-      setCategories(res.data.catalogoOrganizacionDTOList);
-      setSelectedCategory(res.data.catalogoOrganizacionDTOList[0]);
-    });
+    axios
+      .get(urlCategories)
+      .then((res) => {
+        setCategories(res.data.catalogoOrganizacionDTOList);
+
+        const selected = res.data.catalogoOrganizacionDTOList[0];
+        axios
+          .get(urlOrganizations + selected.catalogoOrganizacionId)
+          .then((res) => {
+            setSelectedCategory(selected);
+            setOrganizations(res.data.organizacionDTOList);
+            setViewTitle(true);
+
+            if (res.data.organizacionDTOList.length > 4){
+              setSlidesPerRow(2);
+            }
+          })
+          .catch(function (error) {
+            setOrganizations({});
+            console.log(error);
+            setViewTitle(false);
+          });
+      }).catch(function (error) {
+        setOrganizations({});
+        console.log(error);
+        setViewTitle(false);
+      });
   }, []);
+
+  const handleClick = (e) => {
+    if (typeof e.item !== "undefined") {
+      setSelectedCategory(e.item);
+      const myObjStr = JSON.stringify(e.item);
+      console.log("Received in Home" + myObjStr);
+
+      setViewTitle(false);
+      setOrganizations({});
+      
+      axios
+        .get(urlOrganizations + e.item.catalogoOrganizacionId)
+        .then((res) => {
+          setOrganizations(res.data.organizacionDTOList);
+          setViewTitle(true);
+          if (res.data.organizacionDTOList.length > 4){
+            setSlidesPerRow(2);
+          }
+        })
+        .catch(function (error) {
+          setOrganizations({});
+          console.log(error);
+          setViewTitle(false);
+        });
+    }
+  };
+
+  const GenerateProps = (e) => {
+    let props = {
+      organization: e,
+      category: selectedCategory.catalogoOrganizacionNombre,
+    };
+    return props;
+  };
 
   return (
     <div className="home">
       <Title>Paseo el Edén deploy devops</Title>
       <Banner />
-      <Categories items={categories} />
-      <Modules item={selectedCategory} />
+      <Row>
+        <Col flex="auto" onClick={handleClick}>
+          <Categories items={categories} />
+        </Col>
+      </Row>
+      <Row wrap={false} className="organization-items">
+        <Col flex="auto">
+          <Row>
+            <Col>
+              {organizations.length != null &&
+                <Title level={2} className={viewTitle ? "title" : "title-hide"}>
+                  Catálogo de {selectedCategory.catalogoOrganizacionNombre}
+                </Title>}
+            </Col>
+          </Row>
+          <Slider {...settingsOrg}>
+            {organizations.length != null &&
+              organizations.map((item) => (
+                <OrganizationItem
+                  key={item.organizacionId}
+                  organization={GenerateProps(item)}
+                />
+              ))}
+          </Slider>
+        </Col>
+      </Row>
     </div>
   );
 };

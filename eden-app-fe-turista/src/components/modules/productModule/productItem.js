@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Card, Row, Col, Modal, Button } from "antd";
 import { isMobile } from "react-device-detect";
+import { CloseCircleOutlined } from '@ant-design/icons';
 import "./productItem.css";
 
 const { Title } = Typography;
@@ -32,10 +33,12 @@ const ProductItem = (props) => {
         className="card"
         cover={<img alt="" className="product-image" src={product.urlImagen} />}
         onClick={showModal}
-      ></Card>
+      />
       <Row className="item-overview">
         <Col flex="175px">
-          <Title level={5}>{product.nombre}</Title>
+          <Title level={5} className="item-title">
+            {product.nombre}
+          </Title>
           <p className="item-description">
             {product.descripcion}
           </p>
@@ -55,6 +58,7 @@ const ProductItem = (props) => {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        closeIcon={<CloseCircleOutlined style={{ fontSize: '24px' }} />}
         bodyStyle={{
           overflowY: "auto",
           overflow: "hidden",
@@ -70,7 +74,7 @@ const ProductItem = (props) => {
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
-        }}>
+          }}>
             <span className="product-title">{product.nombre}</span>
           </div>
           <div className="price">
@@ -78,7 +82,7 @@ const ProductItem = (props) => {
           </div>
           <div className="general">
             <p>
-                {product.descripcion}
+              {product.descripcion}
             </p>
           </div>
         </div>
