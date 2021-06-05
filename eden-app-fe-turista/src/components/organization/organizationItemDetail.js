@@ -7,15 +7,17 @@ import "./organizationItemDetail.css";
 import { API_ADMIN } from "../../context/constants";
 import ProductItem from "../modules/productModule/productItem";
 
-import { YoutubeOutlined, WhatsAppOutlined, InfoCircleOutlined,
-  InstagramOutlined, FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
+import {
+  YoutubeOutlined, WhatsAppOutlined, InfoCircleOutlined,
+  InstagramOutlined, FacebookOutlined, TwitterOutlined
+} from '@ant-design/icons';
 
 const { Title } = Typography;
 const urlGET = API_ADMIN + "organizacion/";
 
 const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 4,
@@ -104,7 +106,7 @@ const OrganizationItemDetail = (props) => {
 
   const GenerateExternalLink = (e) => {
     var linki = e;
-    if (linki.toLowerCase().indexOf("https://") === -1){
+    if (linki.toLowerCase().indexOf("https://") === -1) {
       linki = "https://" + linki;
     }
     return linki;
@@ -120,14 +122,16 @@ const OrganizationItemDetail = (props) => {
         <div>
           <div>
             <Title>Paseo el Edén - {organization.nombre}</Title>
-            <div className="breadcrumb">Home / {catalogOrganization} </div>
+            <div className="breadcrumb">
+              <a href="/">Home</a> / {catalogOrganization}
+            </div>
             <div className="banner">
-              <div className="card-item">
-                <img
-                  className="photo-item"
-                  src={organization.urlBanner}
-                  alt=""
-                />
+              <div className="card-item" style={{
+                backgroundImage: 'url(' + organization.urlBanner + ')'
+              }}>
+                <div className="photo-container">
+                  <img className="photo-logo" src={organization.urlLogo} alt="" />
+                </div>
               </div>
             </div>
             <div className="description">

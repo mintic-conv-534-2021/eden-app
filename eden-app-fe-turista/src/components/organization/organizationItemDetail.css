@@ -8,14 +8,24 @@
     background: #39B0F3;
     border-radius: 12px;
     position: relative;
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: right;
 }
 
-.organization-item-detail .banner .card-item .photo-item{  
-    height: 200px;
-    width: auto;
-    background: #39B0F3;
-    border-radius: 12px;
+.organization-item-detail .banner .card-item .photo-container{  
+    padding-right: 20px;
+    padding-top: 7px;
+}
+
+.organization-item-detail .banner .card-item .photo-container .photo-logo{  
+    height: 185px;
+    width: 185px;
     position: relative;
+    border-radius: 50%;
+    border: 5px solid lightgray;
 }
 
 .organization-item-detail .description{  
