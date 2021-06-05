@@ -45,9 +45,8 @@ const Home = () => {
       {
         breakpoint: 835,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          slidesPerRow: 2,
+          slidesToShow: 2,
+          slidesPerRow: 1,
         },
       },
       {

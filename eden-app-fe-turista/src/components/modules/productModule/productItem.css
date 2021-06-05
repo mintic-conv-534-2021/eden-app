@@ -21,7 +21,7 @@
 
 .ant-btn.item-button{
     height: 55px;
-    width: 140px;
+    width: 110px;
     font-family: Roboto;
     font-size: 22px;
     font-style: normal;
@@ -44,16 +44,17 @@
 
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
-.item-title{
+.product-item .item-overview .item-title{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     padding-right: 10px;
+    font-size: 14px;
 }
 
 .description-container{
@@ -96,7 +97,7 @@
 }
 
 .item-overview .item-column-1{
-    flex: 0 0 175px;
+    flex: 0 0 205px
 }
 
 
@@ -137,7 +138,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 320px) {
     .product-item .card{
         width: 270px;
     }

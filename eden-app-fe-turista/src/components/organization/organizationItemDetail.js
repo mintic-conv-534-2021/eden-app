@@ -121,7 +121,7 @@ const OrganizationItemDetail = (props) => {
       {organization !== "" && (
         <div>
           <div>
-            <Title>Paseo el Edén - {organization.nombre}</Title>
+            <Title><a href="/">Paseo el Edén</a> - {organization.nombre}</Title>
             <div className="breadcrumb">
               <a href="/">Home</a> / {catalogOrganization}
             </div>

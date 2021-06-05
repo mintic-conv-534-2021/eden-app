@@ -40,7 +40,7 @@
 
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 320px) {
     .organization-item .card{
         width: 270px;
     }
@@ -55,6 +55,5 @@
     
     .organization-item .card .card-image{
         width: 270px;
-        border-radius: 0px;
     }
 }
