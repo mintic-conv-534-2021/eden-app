@@ -32,27 +32,28 @@ const Home = () => {
         breakpoint: 1300,
         settings: {
           slidesToShow: 3,
-          slidesPerRow: 2,
+          slidesPerRow: slidesPerRow,
         },
       },
       {
         breakpoint: 1075,
         settings: {
-          slidesToShow: 3,
-          slidesPerRow: 2,
+          slidesToShow: 2,
+          slidesPerRow: slidesPerRow,
         },
       },
       {
         breakpoint: 835,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          slidesPerRow: 2,
         },
       },
       {
         breakpoint: 585,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
           slidesPerRow: 2,
         },
       },

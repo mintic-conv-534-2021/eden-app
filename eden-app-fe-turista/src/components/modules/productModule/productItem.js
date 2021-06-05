@@ -35,7 +35,7 @@ const ProductItem = (props) => {
         onClick={showModal}
       />
       <Row className="item-overview">
-        <Col flex="175px">
+        <Col className="item-column-1">
           <Title level={5} className="item-title">
             {product.nombre}
           </Title>

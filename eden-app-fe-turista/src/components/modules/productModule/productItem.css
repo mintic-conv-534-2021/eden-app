@@ -53,6 +53,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    padding-right: 10px;
 }
 
 .description-container{
@@ -71,7 +72,7 @@
     letter-spacing: 0em;
     text-align: left;
     position: absolute;
-    top: 45%;
+    top: 43%;
     left: 5%;
 
     color: white;
@@ -85,11 +86,17 @@
     line-height: 42px;
     text-align: right;
     padding-right: 5%;
+    padding-top: 10px;
 }
 
 .description-container .general{
     padding-right: 50px;
     padding-left: 25px;
+    padding-top: 10px;
+}
+
+.item-overview .item-column-1{
+    flex: 0 0 175px;
 }
 
 
@@ -129,6 +136,26 @@
     color: white;
 }
 
-@media only screen and (max-width: 600px) {
 
-  }
+@media only screen and (max-width: 600px) {
+    .product-item .card{
+        width: 270px;
+    }
+
+    .product-item .card .product-image{
+        width: 270px;
+    }
+
+    .organization-item-detail .banner .card-item .photo-container .photo-logo{
+        height: 110px;
+        width: 110px;
+    }
+
+    .item-overview .item-column-1{
+        flex: 0 0 130px;
+    }
+
+    .description-container .product-title{
+        top: 38%;
+    }
+}
