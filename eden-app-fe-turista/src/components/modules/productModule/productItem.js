@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Typography, Card, Row, Col, Modal, Button } from "antd";
 import { isMobile } from "react-device-detect";
 import { CloseCircleOutlined } from '@ant-design/icons';
+import NumberFormat from 'react-number-format';
 import "./productItem.css";
 
 const { Title } = Typography;
@@ -45,7 +46,7 @@ const ProductItem = (props) => {
         </Col>
         <Col flex="auto">
           <Button className="item-button" htmlType="button">
-            {'\u0024'} {product.precio}
+            <NumberFormat value={product.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} />
           </Button>
         </Col>
       </Row>
