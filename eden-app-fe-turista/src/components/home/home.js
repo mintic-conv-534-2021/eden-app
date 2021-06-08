@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 const Home = () => (
     <div className="home">
-        <Title>Paseo el Edén deploy devops</Title>
+        <Title>Paseo el Edén</Title>
         <Banner />
         <Categories />
         <Modules />
