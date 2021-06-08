@@ -113,7 +113,7 @@ const OrganizationItemDetail = (props) => {
   }
 
   const GenerateWhatsapp = (e) => {
-    return "https://wa.me/" + e.replace(/\s/g, '');;
+    return "https://wa.me/" + e.replace(/\s/g, '');
   }
 
   return (
@@ -136,8 +136,10 @@ const OrganizationItemDetail = (props) => {
             </div>
             <div className="description">
               <h2>{organization.nombre}</h2>
-              <p>{organization.descripcion}</p>
-              <span className="address">{organization.direccion}</span>
+              <p className="description-text">{organization.descripcion}</p>
+              <span className="address">Dirección: {organization.direccion}</span>
+              <br />
+              <span className="phone-number">Teléfono: {organization.telefono}</span>
               {Object.keys(organization.redSocial).length > 0 &&
                 <div className="social-section">
                   {organization.redSocial.whatsapp !== "" &&

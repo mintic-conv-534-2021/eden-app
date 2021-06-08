@@ -33,7 +33,21 @@
     padding-bottom: 25px;
 }
 
+.organization-item-detail .description-text{  
+    padding-bottom: 0px;
+    margin-block-end: 5px;
+}
+
 .organization-item-detail .address{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.organization-item-detail .phone-number{
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
