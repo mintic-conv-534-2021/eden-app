@@ -60,6 +60,7 @@ const ProductItem = (props) => {
         onOk={handleOk}
         onCancel={handleCancel}
         closeIcon={<CloseCircleOutlined style={{ fontSize: '24px' }} />}
+        centered
         bodyStyle={{
           overflowY: "auto",
           overflow: "hidden",
