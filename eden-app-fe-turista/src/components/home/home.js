@@ -126,7 +126,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Title>Paseo el Edén deploy devops</Title>
+      <Title>Paseo el Edén</Title>
       <Banner />
       <Row>
         <Col flex="auto" onClick={handleClick}>
