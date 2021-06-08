@@ -1,13 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
 
-const contentStyle = {
-    height: '380px',
-    color: 'white',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#F84444',
-};
+import Banner1 from "../../images/Banner1.png";
+import Banner2 from "../../images/Banner2.png";
+import Banner3 from "../../images/Banner3.png";
+
+import "./banner.css";
 
 const settings = {
     dots: true,
@@ -19,22 +17,20 @@ const settings = {
 };
 
 const Banner = () => (
-    <div className="banner">
-        <Slider {...settings}>
-            <div>
-                <h3 style={contentStyle}>1</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>2</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>3</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>4</h3>
-            </div>
-        </Slider>
-
+    <div className="header-banner">
+        <div>
+            <Slider {...settings}>
+                <div>
+                    <img className="banner-photo" alt="" src={Banner1} />
+                </div>
+                <div>
+                    <img className="banner-photo" alt="" src={Banner2} />
+                </div>
+                <div>
+                    <img className="banner-photo" alt="" src={Banner3} />
+                </div>
+            </Slider>
+        </div>
     </div>
 )
 

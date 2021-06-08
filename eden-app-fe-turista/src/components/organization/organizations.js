@@ -1,63 +1,98 @@
 import React, { useState, useEffect } from "react";
-import Banner from "../banner/banner";
-import { Typography, Row, Col } from "antd";
-import Categories from "../categories/categories";
+import { Row, Col, Typography } from "antd";
 import axios from "axios";
 import Slider from "react-slick";
+import CategoryItem from "../categories/categoryItem";
 import OrganizationItem from "../organization/organizationItem"
 
-import "./home.css";
 import { API_ADMIN } from "../../context/constants";
-const { Title } = Typography;
-
-
+import "./organizations.css";
 const urlCategories = API_ADMIN + "catalogo-organizacion";
 const urlOrganizations = API_ADMIN + "organizacion/catalogo-organizacion/";
 
-const Home = () => {
-  const [categories, setCategories] = useState({});
-  const [selectedCategory, setSelectedCategory] = useState({});
-  const [organizations, setOrganizations] = useState({});
-  const [viewTitle, setViewTitle] = useState(false);
-  const [slidesPerRow, setSlidesPerRow] = useState(1);
+const { Title } = Typography;
 
-  const settingsOrg = {
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 5,
+  responsive: [
+    {
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      breakpoint: 1075,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 835,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 585,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
+const settingsOrg = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesPerRow: slidesPerRow,
+    slidesPerRow: 4,
     responsive: [
       {
         breakpoint: 1300,
         settings: {
           slidesToShow: 3,
-          slidesPerRow: slidesPerRow,
+          slidesPerRow: 2,
         },
       },
       {
         breakpoint: 1075,
         settings: {
-          slidesToShow: 2,
-          slidesPerRow: slidesPerRow,
+          slidesToShow: 3,
+          slidesPerRow: 2,
         },
       },
       {
         breakpoint: 835,
         settings: {
           slidesToShow: 2,
-          slidesPerRow: 1,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 585,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesPerRow: 2,
         },
       },
     ],
   };
+
+const Organizations = () => {
+  const [categories, setCategories] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState({});
+  const [organizations, setOrganizations] = useState({});
+  const [viewTitle, setViewTitle] = useState(false);
 
   //Update only at first load
   useEffect(() => {
@@ -66,81 +101,70 @@ const Home = () => {
       .then((res) => {
         setCategories(res.data.catalogoOrganizacionDTOList);
 
-        const selected = res.data.catalogoOrganizacionDTOList[0];
-        axios
+          const selected = res.data.catalogoOrganizacionDTOList[0];
+          axios
           .get(urlOrganizations + selected.catalogoOrganizacionId)
           .then((res) => {
             setSelectedCategory(selected);
             setOrganizations(res.data.organizacionDTOList);
             setViewTitle(true);
-
-            if (res.data.organizacionDTOList.length > 4){
-              setSlidesPerRow(2);
-            }
           })
           .catch(function (error) {
             setOrganizations({});
             console.log(error);
-            setViewTitle(false);
           });
       }).catch(function (error) {
         setOrganizations({});
         console.log(error);
-        setViewTitle(false);
       });
   }, []);
 
+  
   const handleClick = (e) => {
     if (typeof e.item !== "undefined") {
       setSelectedCategory(e.item);
       const myObjStr = JSON.stringify(e.item);
-      console.log("Received in Home" + myObjStr);
+      console.log("Received in Categories" + myObjStr);
 
-      setViewTitle(false);
-      setOrganizations({});
-      
+      setViewTitle(true);
+
       axios
         .get(urlOrganizations + e.item.catalogoOrganizacionId)
         .then((res) => {
           setOrganizations(res.data.organizacionDTOList);
-          setViewTitle(true);
-          if (res.data.organizacionDTOList.length > 4){
-            setSlidesPerRow(2);
-          }
         })
         .catch(function (error) {
           setOrganizations({});
           console.log(error);
-          setViewTitle(false);
         });
     }
   };
 
-  const GenerateProps = (e) => {
-    let props = {
-      organization: e,
-      category: selectedCategory.catalogoOrganizacionNombre,
-    };
-    return props;
-  };
-
   return (
-    <div className="home">
-      <Title>Paseo el Edén deploy devops</Title>
-      <Banner />
-      <Row>
-        <Col flex="auto" onClick={handleClick}>
-          <Categories items={categories} />
+    <div className="organizations">
+      <Row wrap={false}>
+        <Col flex="auto" className="categories" onClick={handleClick}>
+          <Slider {...settings}>
+            {categories.length != null &&
+              categories.map((item) => (
+                <CategoryItem
+                  key={item.catalogoOrganizacionId}
+                  category={item}
+                />
+              ))}
+          </Slider>
         </Col>
       </Row>
-      <Row wrap={false} className="organization-items">
-        <Col flex="auto">
+      <Row wrap={false}>
+        <Col flex="auto" className="subdivision"></Col>
+      </Row>
+      <Row wrap={false}>
+        <Col flex="auto" className="organization-items">
           <Row>
             <Col>
-              {organizations.length != null &&
-                <Title level={2} className={viewTitle ? "title" : "title-hide"}>
-                  Catálogo de {selectedCategory.catalogoOrganizacionNombre}
-                </Title>}
+              <Title className={viewTitle ? "title" : "title-hide"} level={2}>
+                Catálogo de {selectedCategory.nombre}
+              </Title>
             </Col>
           </Row>
           <Slider {...settingsOrg}>
@@ -148,7 +172,7 @@ const Home = () => {
               organizations.map((item) => (
                 <OrganizationItem
                   key={item.organizacionId}
-                  organization={GenerateProps(item)}
+                  organization={item}
                 />
               ))}
           </Slider>
@@ -157,4 +181,5 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+
+export default Organizations;

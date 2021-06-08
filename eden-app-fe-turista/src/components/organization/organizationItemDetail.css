@@ -1,0 +1,49 @@
+.organization-item-detail .banner{
+    padding-top: 10px;
+}
+
+.organization-item-detail .banner .card-item{  
+    height: 200px;
+    width: auto;
+    background: #39B0F3;
+    border-radius: 12px;
+    position: relative;
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.organization-item-detail .banner .card-item .photo-container{  
+    padding-right: 20px;
+    padding-top: 7px;
+}
+
+.organization-item-detail .banner .card-item .photo-container .photo-logo{  
+    height: 185px;
+    width: 185px;
+    position: relative;
+    border-radius: 50%;
+    border: 5px solid lightgray;
+}
+
+.organization-item-detail .description{  
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.organization-item-detail .address{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.organization-item-detail .social-icon{
+    font-size: 30px;
+    padding-top: 5px;
+    padding-right: 5px;
+}

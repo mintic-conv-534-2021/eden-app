@@ -1,7 +1,17 @@
+.product-item{
+    padding-bottom: 30px;
+}
+
 .product-item .card{
-    width: 300px;
+    width: 315px;
     height: 280px;
     background-color: #C4C4C4;
+    border-radius: 12px;
+}
+
+.product-item .card .product-image{
+    width: 315px;
+    height: 280px;
     border-radius: 12px;
 }
 
@@ -9,9 +19,9 @@
     padding: 10px 0 10px 0;
 }
 
-.item-button{
+.ant-btn.item-button{
     height: 55px;
-    width: 140px;
+    width: 110px;
     font-family: Roboto;
     font-size: 22px;
     font-style: normal;
@@ -19,14 +29,134 @@
     line-height: 26px;
     letter-spacing: 0em;
     text-align: center;
+    background-color: #C4C4C4;
+    border-radius: 12px;
 }
 
 .item-description{
-    font-family: Roboto;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: 12px;
     letter-spacing: 0em;
+    text-align: justify;
+    padding-right: 10px;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.product-item .item-overview .item-title{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+.description-container{
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+}
+
+.description-container .product-title{
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
     text-align: left;
+    position: absolute;
+    top: 43%;
+    left: 5%;
+
+    color: white;
+    text-shadow: 0 0 12px black;
+}
+
+.description-container .price{
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: right;
+    padding-right: 5%;
+    padding-top: 10px;
+}
+
+.description-container .general{
+    padding-right: 50px;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.item-overview .item-column-1{
+    flex: 0 0 205px
+}
+
+
+/* Modal properties (take this to another place, plz) */
+.ant-modal.custom-modal{
+    width: 70%;
+}
+
+.ant-modal-content{
+    border-radius: 12px;
+}
+
+.custom-modal .background{
+    height: 280px;
+    border-radius: 12px;
+    background-color: #C4C4C4;
+    opacity: 0.9s;
+}
+
+.ant-modal-body{
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ant-modal-title{
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+    align-self: flex-end;
+    padding-left: 15px;
+}
+
+.ant-modal-close-x{
+    color: white;
+}
+
+
+@media only screen and (max-width: 320px) {
+    .product-item .card{
+        width: 270px;
+    }
+
+    .product-item .card .product-image{
+        width: 270px;
+    }
+
+    .organization-item-detail .banner .card-item .photo-container .photo-logo{
+        height: 110px;
+        width: 110px;
+    }
+
+    .item-overview .item-column-1{
+        flex: 0 0 130px;
+    }
+
+    .description-container .product-title{
+        top: 38%;
+    }
 }
