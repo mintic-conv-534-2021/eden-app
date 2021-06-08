@@ -6,11 +6,16 @@ import Slider from "react-slick";
 import "./organizationItemDetail.css";
 import { API_ADMIN } from "../../context/constants";
 import ProductItem from "../modules/productModule/productItem";
+import { useHistory } from "react-router-dom";
 
 import {
-  YoutubeOutlined, WhatsAppOutlined, InfoCircleOutlined,
-  InstagramOutlined, FacebookOutlined, TwitterOutlined
-} from '@ant-design/icons';
+  YoutubeOutlined,
+  WhatsAppOutlined,
+  InfoCircleOutlined,
+  InstagramOutlined,
+  FacebookOutlined,
+  TwitterOutlined,
+} from "@ant-design/icons";
 
 const { Title } = Typography;
 const urlGET = API_ADMIN + "organizacion/";
@@ -57,16 +62,22 @@ const OrganizationItemDetail = (props) => {
   const [organization, setOrganization] = useState("");
   const [catalogOrganization, setCatalogOrganization] = useState("");
   const [catalogs, setCatalogs] = useState([]);
+  let history = useHistory();
+
+  let item = props.location.state;
+  if (typeof item !== "undefined") {
+    item = item.props.organization;
+  } else {
+    item = "";
+    history.push("/");
+  }
 
   useEffect(() => {
-    let item = props.location.state;
-
-    if (typeof item !== "undefined") {
-      const org = item.props.organization;
-      setCatalogOrganization(org.category);
+    if (item !== "") {
+      setCatalogOrganization(item.category);
 
       axios
-        .get(urlGET + org.organization.organizacionId)
+        .get(urlGET + item.organization.organizacionId)
         .then((res) => {
           setOrganization(res.data.organizacionDTO);
           setCatalogs(
@@ -81,6 +92,7 @@ const OrganizationItemDetail = (props) => {
         });
     } else {
       setOrganization("");
+      history.push("/");
     }
 
     const GetArrayElements = (vard) => {
@@ -102,7 +114,7 @@ const OrganizationItemDetail = (props) => {
       }
       return itemsArr1;
     };
-  }, [props]);
+  }, [item, history]);
 
   const GenerateExternalLink = (e) => {
     var linki = e;
@@ -110,82 +122,147 @@ const OrganizationItemDetail = (props) => {
       linki = "https://" + linki;
     }
     return linki;
-  }
+  };
 
   const GenerateWhatsapp = (e) => {
-    return "https://wa.me/" + e.replace(/\s/g, '');
-  }
+    return "https://wa.me/" + e.replace(/\s/g, "");
+  };
 
   return (
     <div className="organization-item-detail">
       {organization !== "" && (
         <div>
           <div>
-            <Title><a href="/">Paseo el Edén</a> - {organization.nombre}</Title>
+            <Title>
+              <a href="/">Paseo el Edén</a> - {organization.nombre}
+            </Title>
             <div className="breadcrumb">
               <a href="/">Home</a> / {catalogOrganization}
             </div>
             <div className="banner">
-              <div className="card-item" style={{
-                backgroundImage: 'url(' + organization.urlBanner + ')'
-              }}>
+              <div
+                className="card-item"
+                style={{
+                  backgroundImage: "url(" + organization.urlBanner + ")",
+                }}
+              >
                 <div className="photo-container">
-                  <img className="photo-logo" src={organization.urlLogo} alt="" />
+                  <img
+                    className="photo-logo"
+                    src={organization.urlLogo}
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
             <div className="description">
               <h2>{organization.nombre}</h2>
               <p className="description-text">{organization.descripcion}</p>
-              <span className="address">Dirección: {organization.direccion}</span>
+              <span className="address">
+                Dirección: {organization.direccion}
+              </span>
               <br />
-              <span className="phone-number">Teléfono: {organization.telefono}</span>
-              {Object.keys(organization.redSocial).length > 0 &&
+              <span className="phone-number">
+                Teléfono: {organization.telefono}
+              </span>
+              {Object.keys(organization.redSocial).length > 0 && (
                 <div className="social-section">
-                  {organization.redSocial.whatsapp !== "" &&
-                    <a href={GenerateWhatsapp(organization.redSocial.whatsapp)} target="_blank" rel="noreferrer">
-                      <Tooltip placement="top" title={organization.redSocial.whatsapp}>
+                  {organization.redSocial.whatsapp !== "" && (
+                    <a
+                      href={GenerateWhatsapp(organization.redSocial.whatsapp)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Tooltip
+                        placement="top"
+                        title={organization.redSocial.whatsapp}
+                      >
                         <WhatsAppOutlined className="social-icon" />
                       </Tooltip>
                     </a>
-                  }
-                  {organization.redSocial.urlInstagram !== "" &&
-                    <a href={GenerateExternalLink(organization.redSocial.urlInstagram)} target="_blank" rel="noreferrer">
-                      <Tooltip placement="top" title={organization.redSocial.urlInstagram}>
+                  )}
+                  {organization.redSocial.urlInstagram !== "" && (
+                    <a
+                      href={GenerateExternalLink(
+                        organization.redSocial.urlInstagram
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Tooltip
+                        placement="top"
+                        title={organization.redSocial.urlInstagram}
+                      >
                         <InstagramOutlined className="social-icon" />
                       </Tooltip>
                     </a>
-                  }
-                  {organization.redSocial.urlFacebook !== "" &&
-                    <a href={GenerateExternalLink(organization.redSocial.urlFacebook)} target="_blank" rel="noreferrer">
-                      <Tooltip placement="top" title={organization.redSocial.urlFacebook}>
+                  )}
+                  {organization.redSocial.urlFacebook !== "" && (
+                    <a
+                      href={GenerateExternalLink(
+                        organization.redSocial.urlFacebook
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Tooltip
+                        placement="top"
+                        title={organization.redSocial.urlFacebook}
+                      >
                         <FacebookOutlined className="social-icon" />
                       </Tooltip>
                     </a>
-                  }
-                  {organization.redSocial.urlTwitter !== "" &&
-                    <a href={GenerateExternalLink(organization.redSocial.urlTwitter)} target="_blank" rel="noreferrer">
-                      <Tooltip placement="top" title={organization.redSocial.urlTwitter}>
+                  )}
+                  {organization.redSocial.urlTwitter !== "" && (
+                    <a
+                      href={GenerateExternalLink(
+                        organization.redSocial.urlTwitter
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Tooltip
+                        placement="top"
+                        title={organization.redSocial.urlTwitter}
+                      >
                         <TwitterOutlined className="social-icon" />
                       </Tooltip>
                     </a>
-                  }
-                  {organization.redSocial.urlTiktok !== "" &&
-                    <a href={GenerateExternalLink(organization.redSocial.urlTiktok)} target="_blank" rel="noreferrer">
-                      <Tooltip placement="top" title={organization.redSocial.urlTiktok}>
+                  )}
+                  {organization.redSocial.urlTiktok !== "" && (
+                    <a
+                      href={GenerateExternalLink(
+                        organization.redSocial.urlTiktok
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Tooltip
+                        placement="top"
+                        title={organization.redSocial.urlTiktok}
+                      >
                         <YoutubeOutlined className="social-icon" />
                       </Tooltip>
                     </a>
-                  }
-                  {organization.redSocial.webPage !== "" &&
-                    <a href={GenerateExternalLink(organization.redSocial.webPage)} target="_blank" rel="noreferrer">
-                      <Tooltip placement="top" title={organization.redSocial.webPage}>
+                  )}
+                  {organization.redSocial.webPage !== "" && (
+                    <a
+                      href={GenerateExternalLink(
+                        organization.redSocial.webPage
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Tooltip
+                        placement="top"
+                        title={organization.redSocial.webPage}
+                      >
                         <InfoCircleOutlined className="social-icon" />
                       </Tooltip>
                     </a>
-                  }
+                  )}
                 </div>
-              }
+              )}
             </div>
           </div>
           <div>
