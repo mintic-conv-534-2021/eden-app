@@ -80,7 +80,7 @@ const ProductItem = (props) => {
             <span className="product-title">{product.nombre}</span>
           </div>
           <div className="price">
-            <span>{'\u0024'} {product.precio}</span>
+            <NumberFormat value={product.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} />
           </div>
           <div className="general">
             <p>
