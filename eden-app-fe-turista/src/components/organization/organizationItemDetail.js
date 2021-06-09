@@ -42,7 +42,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 420,
+      breakpoint: 450,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -120,6 +120,12 @@ const OrganizationItemDetail = (props) => {
   const GenerateWhatsapp = (e) => {
     return "https://wa.me/" + e.replace(/\s/g, "");
   };
+
+  const RenderProduct = (item) =>{
+    if (item.activo){
+      return <ProductItem key={item.productoId} product={item} />
+    }
+  }
 
   return (
     <div className="organization-item-detail">
@@ -266,9 +272,9 @@ const OrganizationItemDetail = (props) => {
                     <Title level={2}>{item.name}</Title>
                     <Slider {...settings}>
                       {item.items.length != null &&
-                        item.items.map((item) => (
-                          <ProductItem key={item.productoId} product={item} />
-                        ))}
+                        item.items.map((item) => 
+                          RenderProduct(item)
+                        )}
                     </Slider>
                   </Col>
                 </Row>

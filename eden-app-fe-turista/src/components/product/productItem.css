@@ -141,20 +141,32 @@
     color: white;
 }
 
+@media only screen and (max-width: 1440px) {
+    .product-item .card .product-image{
+        height: 20vw;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .product-item .card .product-image{
+        height: 22vw;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .product-item .card .product-image{
-        height: 25vw;
+        height: 30vw;
     }
 }
 
 @media only screen and (max-width: 450px) {
     .product-item .card .product-image{
-        height: 35vw;
+        height: 80vw;
     }
 }
 
 @media only screen and (max-width: 380px) {
     .product-item .card .product-image{
-        height: 55vw;
+        height: 70vw;
     }
 }
