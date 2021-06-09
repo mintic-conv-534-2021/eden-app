@@ -1,18 +1,19 @@
 .product-item{
-    padding-bottom: 30px;
+    padding-bottom: 2%;
+    padding-right: 10px;
 }
 
 .product-item .card{
-    width: 315px;
-    height: 280px;
-    background-color: #C4C4C4;
     border-radius: 12px;
 }
 
+.product-item .card .ant-card-body{
+    padding: 0;
+}
+
 .product-item .card .product-image{
-    width: 315px;
-    height: 280px;
     border-radius: 12px;
+    height: 18vw;
 }
 
 .item-overview{
@@ -21,7 +22,6 @@
 
 .ant-btn.item-button{
     height: 55px;
-    width: 110px;
     font-family: Roboto;
     font-size: 22px;
     font-style: normal;
@@ -65,6 +65,21 @@
     box-sizing: content-box;
 }
 
+.description-container .background{
+    height: 280px;
+    border-radius: 12px;
+    background-color: #C4C4C4;
+    opacity: 0.9;
+    display: flex;
+    align-items: flex-end;
+}
+
+.description-container .title-container{
+    flex: auto;
+    padding-bottom: 2%;
+    padding-left: 5%;
+}
+
 .description-container .product-title{
     font-size: 45px;
     font-style: normal;
@@ -72,10 +87,6 @@
     line-height: 40px;
     letter-spacing: 0em;
     text-align: left;
-    position: absolute;
-    top: 43%;
-    left: 5%;
-
     color: white;
     text-shadow: 0 0 12px black;
 }
@@ -97,7 +108,7 @@
 }
 
 .item-overview .item-column-1{
-    flex: 0 0 205px
+    flex: 1 0 0;
 }
 
 
@@ -108,13 +119,6 @@
 
 .ant-modal-content{
     border-radius: 12px;
-}
-
-.custom-modal .background{
-    height: 280px;
-    border-radius: 12px;
-    background-color: #C4C4C4;
-    opacity: 0.9s;
 }
 
 .ant-modal-body{
@@ -137,26 +141,20 @@
     color: white;
 }
 
-
-@media only screen and (max-width: 320px) {
-    .product-item .card{
-        width: 270px;
-    }
-
+@media only screen and (max-width: 768px) {
     .product-item .card .product-image{
-        width: 270px;
+        height: 25vw;
     }
+}
 
-    .organization-item-detail .banner .card-item .photo-container .photo-logo{
-        height: 110px;
-        width: 110px;
+@media only screen and (max-width: 450px) {
+    .product-item .card .product-image{
+        height: 35vw;
     }
+}
 
-    .item-overview .item-column-1{
-        flex: 0 0 130px;
-    }
-
-    .description-container .product-title{
-        top: 38%;
+@media only screen and (max-width: 380px) {
+    .product-item .card .product-image{
+        height: 55vw;
     }
 }

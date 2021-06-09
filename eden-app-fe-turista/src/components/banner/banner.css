@@ -1,7 +1,12 @@
 .header-banner{
-    padding-right: 40px;
+    padding-right: 10px;
 }
-img.banner-photo{
+
+.header-banner img.banner-photo{
     width: 100%;
 }
 
+.header-banner img.banner-photo-mobile{
+    height: 380px;
+    width: 340px;
+}
