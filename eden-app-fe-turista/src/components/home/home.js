@@ -86,7 +86,6 @@ const Home = () => {
     if (typeof e.item !== "undefined") {
       setSelectedCategory(e.item);
       const myObjStr = JSON.stringify(e.item);
-      console.log("Received in Home" + myObjStr);
 
       setViewTitle(false);
       setOrganizations({});
