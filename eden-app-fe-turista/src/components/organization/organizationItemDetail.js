@@ -5,7 +5,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import "./organizationItemDetail.css";
 import { API_ADMIN } from "../../context/constants";
-import ProductItem from "../modules/productModule/productItem";
+import ProductItem from "../product/productItem";
 import { useHistory } from "react-router-dom";
 
 import {
@@ -25,36 +25,29 @@ const settings = {
   infinite: false,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToScroll: 2,
   responsive: [
     {
-      breakpoint: 1300,
+      breakpoint: 1024,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 2,
       },
     },
     {
-      breakpoint: 1075,
+      breakpoint: 755,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
       },
     },
     {
-      breakpoint: 730,
+      breakpoint: 420,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
       },
-    },
-    {
-      breakpoint: 585,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
+    }
   ],
 };
 

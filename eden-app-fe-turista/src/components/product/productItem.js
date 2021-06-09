@@ -44,7 +44,7 @@ const ProductItem = (props) => {
             {product.descripcion}
           </p>
         </Col>
-        <Col flex="auto">
+        <Col className="item-column-2">
           <Button className="item-button" htmlType="button">
             <NumberFormat value={product.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} />
           </Button>
@@ -77,7 +77,9 @@ const ProductItem = (props) => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
           }}>
-            <span className="product-title">{product.nombre}</span>
+            <div className="title-container">
+              <span className="product-title">{product.nombre}</span>
+            </div>
           </div>
           <div className="price">
             <NumberFormat value={product.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} />

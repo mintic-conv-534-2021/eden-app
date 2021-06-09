@@ -29,28 +29,21 @@ const Home = () => {
     slidesPerRow: slidesPerRow,
     responsive: [
       {
-        breakpoint: 1300,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesPerRow: slidesPerRow,
         },
       },
       {
-        breakpoint: 1075,
+        breakpoint: 755,
         settings: {
           slidesToShow: 2,
           slidesPerRow: slidesPerRow,
         },
       },
       {
-        breakpoint: 835,
-        settings: {
-          slidesToShow: 2,
-          slidesPerRow: 1,
-        },
-      },
-      {
-        breakpoint: 585,
+        breakpoint: 420,
         settings: {
           slidesToShow: 1,
           slidesPerRow: 2,
