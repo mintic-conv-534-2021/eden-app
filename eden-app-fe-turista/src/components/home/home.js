@@ -85,7 +85,6 @@ const Home = () => {
   const handleClick = (e) => {
     if (typeof e.item !== "undefined") {
       setSelectedCategory(e.item);
-      const myObjStr = JSON.stringify(e.item);
 
       setViewTitle(false);
       setOrganizations({});
