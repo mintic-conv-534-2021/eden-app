@@ -36,6 +36,7 @@
 @media only screen and (max-width: 600px) {
   .site-layout-content {
     padding-left: 6%;
+    padding-right: 6%;
   }
   
 }

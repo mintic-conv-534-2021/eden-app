@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-
-import Banner1 from "../../images/Banner1.png";
-import Banner2 from "../../images/Banner2.png";
-import Banner3 from "../../images/Banner3.png";
+import axios from "axios";
+import { isMobile } from "react-device-detect";
 
 import "./banner.css";
+import { API_ADMIN } from "../../context/constants";
+
+const urlEvents = API_ADMIN + "evento?filtrar-activos=true";
 
 const settings = {
     dots: true,
@@ -16,22 +17,34 @@ const settings = {
     autoplay: true
 };
 
-const Banner = () => (
-    <div className="header-banner">
-        <div>
-            <Slider {...settings}>
-                <div>
-                    <img className="banner-photo" alt="" src={Banner1} />
-                </div>
-                <div>
-                    <img className="banner-photo" alt="" src={Banner2} />
-                </div>
-                <div>
-                    <img className="banner-photo" alt="" src={Banner3} />
-                </div>
-            </Slider>
+const Banner = () => {
+    const [events, setEvents] = useState({});
+
+    //Update only at first load
+    useEffect(() => {
+        axios
+            .get(urlEvents)
+            .then((res) => {
+                setEvents(res.data.eventoDTOList);
+            }).catch(function (error) {
+                console.log(error);
+            });
+    }, []);
+
+    return (
+        <div className="header-banner">
+            <div>
+                <Slider {...settings}>
+                    {events.length != null && events.map((item) => (
+                        <img key={item.idEvento} 
+                        className={isMobile ? "banner-photo-mobile" : "banner-photo"}
+                        alt="" 
+                        src={isMobile ? item.urlImagenMovil : item.urlImagenWeb} />
+                    ))}
+                </Slider>
+            </div>
         </div>
-    </div>
-)
+    )
+}
 
 export default Banner;
