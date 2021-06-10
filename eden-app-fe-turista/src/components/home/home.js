@@ -114,6 +114,12 @@ const Home = () => {
     return props;
   };
 
+  const RenderOrganization = (item) =>{
+    if (item.activo){
+      return <OrganizationItem key={item.organizacionId} organization={GenerateProps(item)} />
+    }
+  }
+
   return (
     <div className="home">
       <Title>Paseo el Edén</Title>
@@ -136,10 +142,7 @@ const Home = () => {
           <Slider {...settingsOrg}>
             {organizations.length != null &&
               organizations.map((item) => (
-                <OrganizationItem
-                  key={item.organizacionId}
-                  organization={GenerateProps(item)}
-                />
+                RenderOrganization(item)
               ))}
           </Slider>
         </Col>

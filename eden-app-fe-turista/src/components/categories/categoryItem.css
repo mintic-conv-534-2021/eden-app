@@ -40,13 +40,7 @@
     }
 }
 
-@media only screen and (max-width: 400px) {
-    .category-item .card .photo{
-        height: 40vw;
-    }
-}
-
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 420px) {
     .category-item .card .photo{
         height: 45vw;
     }
