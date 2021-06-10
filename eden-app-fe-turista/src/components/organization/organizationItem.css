@@ -52,13 +52,7 @@
     }
 }
 
-@media only screen and (max-width: 400px) {
-    .organization-item .card .card-image{
-        height: 40vw;
-    }
-}
-
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 420px) {
     .organization-item .card .card-image{
         height: 45vw;
     }
