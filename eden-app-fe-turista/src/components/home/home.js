@@ -10,7 +10,7 @@ import "./home.css";
 import { API_ADMIN } from "../../context/constants";
 const { Title } = Typography;
 
-const urlCategories = API_ADMIN + "catalogo-organizacion";
+const urlCategories = API_ADMIN + "catalogo-organizacion?filtrar-activos=true";
 const urlOrganizations = API_ADMIN + "organizacion/catalogo-organizacion/";
 
 const Home = () => {
