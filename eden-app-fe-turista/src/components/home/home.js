@@ -122,7 +122,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Title>Paseo el Edén</Title>
+      <Title>Paseo el Edén La Tebaida</Title>
       <Banner />
       <Row>
         <Col flex="auto" onClick={handleClick}>
