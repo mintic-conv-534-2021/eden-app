@@ -26,7 +26,8 @@ jobs:
 
         - name: Replace backend endpoint
           run: |
-            sed -i 's/localhost:8080/$BACKEND_ENDPOINT/g' eden-app-fe-turista/src/context/constants.js
+            # se reemplaza: http://localhost:8080 -> https://api.example.com asegurese de ponerlo así en el secret
+            sed -i 's/http:\/\/localhost:8080/'"$BACKEND_ENDPOINT"'/g' eden-app-fe-turista/src/context/constants.js
 
         - name: Install dependencies
           run: |
