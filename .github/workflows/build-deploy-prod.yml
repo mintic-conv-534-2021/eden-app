@@ -20,8 +20,14 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       PROY_DIR: eden-app-fe-turista
+      BACKEND_ENDPOINT: ${{ secrets.BACKEND_ENDPOINT_PROD }}
     steps:
         - uses: actions/checkout@v2
+
+        - name: Replace backend endpoint
+          run: |
+            # se reemplaza: http://localhost:8080 -> https://api.example.com asegurese de ponerlo así en el secret
+            sed -i.bak  's|http://localhost:8080|'$BACKEND_ENDPOINT'|g' eden-app-fe-turista/src/context/constants.js
 
         - name: Install dependencies
           run: |

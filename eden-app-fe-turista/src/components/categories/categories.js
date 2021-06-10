@@ -9,29 +9,29 @@ const settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToScroll: 2,
   responsive: [
     {
-      breakpoint: 1395,
+      breakpoint: 1024,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 2,
       },
     },
     {
-      breakpoint: 1064,
+      breakpoint: 755,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
       },
     },
     {
-      breakpoint: 735,
+      breakpoint: 420,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
       },
-    },
+    }
   ],
 };
 

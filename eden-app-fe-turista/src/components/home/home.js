@@ -10,8 +10,7 @@ import "./home.css";
 import { API_ADMIN } from "../../context/constants";
 const { Title } = Typography;
 
-
-const urlCategories = API_ADMIN + "catalogo-organizacion";
+const urlCategories = API_ADMIN + "catalogo-organizacion?filtrar-activos=true";
 const urlOrganizations = API_ADMIN + "organizacion/catalogo-organizacion/";
 
 const Home = () => {
@@ -29,28 +28,21 @@ const Home = () => {
     slidesPerRow: slidesPerRow,
     responsive: [
       {
-        breakpoint: 1300,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesPerRow: slidesPerRow,
         },
       },
       {
-        breakpoint: 1075,
+        breakpoint: 755,
         settings: {
           slidesToShow: 2,
           slidesPerRow: slidesPerRow,
         },
       },
       {
-        breakpoint: 835,
-        settings: {
-          slidesToShow: 2,
-          slidesPerRow: 1,
-        },
-      },
-      {
-        breakpoint: 585,
+        breakpoint: 420,
         settings: {
           slidesToShow: 1,
           slidesPerRow: 2,
@@ -93,8 +85,6 @@ const Home = () => {
   const handleClick = (e) => {
     if (typeof e.item !== "undefined") {
       setSelectedCategory(e.item);
-      const myObjStr = JSON.stringify(e.item);
-      console.log("Received in Home" + myObjStr);
 
       setViewTitle(false);
       setOrganizations({});
@@ -124,6 +114,12 @@ const Home = () => {
     return props;
   };
 
+  const RenderOrganization = (item) =>{
+    if (item.activo){
+      return <OrganizationItem key={item.organizacionId} organization={GenerateProps(item)} />
+    }
+  }
+
   return (
     <div className="home">
       <Title>Paseo el Edén</Title>
@@ -146,10 +142,7 @@ const Home = () => {
           <Slider {...settingsOrg}>
             {organizations.length != null &&
               organizations.map((item) => (
-                <OrganizationItem
-                  key={item.organizacionId}
-                  organization={GenerateProps(item)}
-                />
+                RenderOrganization(item)
               ))}
           </Slider>
         </Col>

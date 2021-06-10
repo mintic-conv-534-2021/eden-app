@@ -124,7 +124,6 @@ const Organizations = () => {
     if (typeof e.item !== "undefined") {
       setSelectedCategory(e.item);
       const myObjStr = JSON.stringify(e.item);
-      console.log("Received in Categories" + myObjStr);
 
       setViewTitle(true);
 

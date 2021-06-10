@@ -1,8 +1,13 @@
+.category-item{
+    padding-right: 10px;
+}
+
 .category-item .card{
-    width: 315px;
-    height: 170px;
-    background-color: #C4C4C4;
     border-radius: 12px;
+}
+
+.category-item .card .ant-card-body{
+    padding: 0;
 }
 
 .category-item .title{
@@ -10,14 +15,11 @@
 }
 
 .category-item .card .photo{
-    width: 315px;
-    height: 170px;
-    background-color: #C4C4C4;
     border-radius: 12px;
+    height: 13vw;
 }
 
 .category-item .card-description{
-    width: 315px;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -26,16 +28,20 @@
     text-align: justify;
 }
 
-@media only screen and (max-width: 320px) {
-    .category-item .card{
-        width: 270px;
-    }
-
-    .category-item .card-description{
-        width: 270px;
-    }
-
+@media only screen and (max-width: 768px) {
     .category-item .card .photo{
-        width: 270px;
+        height: 20vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .category-item .card .photo{
+        height: 30vw;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .category-item .card .photo{
+        height: 45vw;
     }
 }

@@ -1,12 +1,14 @@
 .organization-item {
     padding-bottom: 25px;
+    padding-right: 10px;
 }
 
 .organization-item .card{
-    width: 315px;
-    height: 170px;
-    background-color: #C4C4C4;
     border-radius: 12px;
+}
+
+.organization-item .card .ant-card-body{
+    padding: 0;
 }
 
 .organization-item .card-title{
@@ -18,14 +20,13 @@
     letter-spacing: 0em;
     text-align: left;
 }
+
 .organization-item .card .card-image{
-    width: 315px;
-    height: 170px;
     border-radius: 12px;
+    height: 13vw;
 }
 
 .organization-item .card-description{
-    width: 315px;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -39,21 +40,20 @@
 }
 
 
-
-@media only screen and (max-width: 320px) {
-    .organization-item .card{
-        width: 270px;
-    }
-
-    .organization-item .card-title{
-        width: 270px;
-    }
-
-    .organization-item .card-description{
-        width: 270px;
-    }
-    
+@media only screen and (max-width: 768px) {
     .organization-item .card .card-image{
-        width: 270px;
+        height: 20vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .organization-item .card .card-image{
+        height: 30vw;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .organization-item .card .card-image{
+        height: 45vw;
     }
 }
