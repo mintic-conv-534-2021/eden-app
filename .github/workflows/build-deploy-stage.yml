@@ -23,6 +23,12 @@ jobs:
     steps:
         - uses: actions/checkout@v2
 
+        - name: Replace backend endpoint
+          env:
+            BACKEND_ENDPOINT: ${{ secrets.BACKEND_ENDPOINT_STAGE }}
+            run: |
+              sed -i 's/localhost:8080/$BACKEND_ENDPOINT/g' eden-app-fe-turista/src/context/constants.js
+
         - name: Install dependencies
           run: |
             cd $PROY_DIR
