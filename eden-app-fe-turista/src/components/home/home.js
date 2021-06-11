@@ -44,8 +44,10 @@ const Home = () => {
       {
         breakpoint: 420,
         settings: {
+          infinite: true,
           slidesToShow: 1,
-          slidesPerRow: 2,
+          slidesPerRow: 1,
+          slidesToScroll: 1,
         },
       },
     ],
