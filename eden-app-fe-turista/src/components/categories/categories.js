@@ -6,7 +6,7 @@ import "./categories.css";
 
 const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 2,
@@ -28,7 +28,6 @@ const settings = {
     {
       breakpoint: 420,
       settings: {
-        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
       },
